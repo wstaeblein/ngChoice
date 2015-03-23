@@ -1,0 +1,135 @@
+<html ng-app="testngchoice">
+<head>
+	<title>Diretiva Choice</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/ngchoice.css" />
+
+    <style type="text/css">
+        body { font: normal 11px verdana;}
+
+ 
+    </style>
+</head>
+<body ng-controller="mainController">
+
+<div style="width: 1000px; margin: 50px auto 10px auto; text-align: center"><h1>ng-Choice Directive</h1></div>
+<div style="width: 1000px; margin: 20px auto; border: 1px dotted #DADADA; overflow: hidden; padding: 20px 20px 200px 20px; min-height: 500px">
+	<h2>Examples</h2>
+
+    <div style="margin-bottom: 30px; border-bottom: 1px dotted #DADADA; padding-bottom: 30px;">
+        <h3>Simple dropdown.</h3>
+        <p>Similar to a &lt;select&gt; tag. No images but with a placeholder and sorted in ascending order</p>
+        <choice ng-model="selProg" list="listProg" sortdir="1" menu="false" width="150"  title="Escolha..."></choice>
+        <span style="padding-left: 40px; vertical-align: bottom; padding-bottom: 5px; display: inline-block; line-height: 2em;">The selected language is <b>{{ selProg.text }}</b></span>
+    
+        <div style="margin-top: 15px">
+        <button ng-click="resetProg()">Reset chosen value</button>&nbsp;&nbsp;
+        <button ng-click="addProg()">Insert New Item</button>
+        
+        </div>
+
+    </div>
+
+
+    <div style="margin-bottom: 30px; border-bottom: 1px dotted #DADADA; padding-bottom: 30px;">
+        <h3>Image Dropdown. </h3>
+        <p>The first one has a fixed width and the second can grow or shrink according to its contents</p>
+        <choice ng-model="selFood" list="listFood" menu="false" menutype="" width="200"></choice>
+        
+        <choice ng-model="selBev" list="listBev" menu="false" title="Escolha um item"></choice>
+    </div>
+
+    <div style="margin-bottom: 30px; border-bottom: 1px dotted #DADADA; padding-bottom: 30px;">
+        <h3>Image only dropdown</h3>
+        <choice ng-model="selFlags" list="listFlags" menu="false"></choice>
+    </div>
+
+    <div style="margin-bottom: 30px; border-bottom: 1px dotted #DADADA; padding-bottom: 30px; font-size: 12px">
+        <h3>As a menu item</h3>
+
+        <table style="font-size: inherit">
+            <tr>
+                <td>
+                    <choice ng-model="selected5" list="lista5" menu="true" title="Choose a Department" titleimg="asterisk.png"></choice>
+                </td>
+                <td style="padding-left: 50px"></td>
+                <td>
+                    <b>Action:</b> <span ng-show="selected5">Load {{ selected5.text }} module</span>
+                </td>
+            </tr>
+        </table>
+    </div>    
+</div>
+
+
+  <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+
+  <script type="text/javascript" src="js/angular.min.js"></script>
+  <script type="text/javascript" src="js/angular-animate.min.js"></script>
+  <script type="text/javascript" src="js/ngChoice.js"></script>
+
+
+
+	<script type="text/javascript">
+
+
+        var app = angular.module('testngchoice', ['ngChoice']);
+
+        app.controller('mainController', ['$scope', function($scope) {
+
+            $scope.listFood = [
+                { id: 1, text: 'Hamburger', img: 'food/burger.png'}, 
+                { id: 2, text: 'Cheeseburger', img: 'food/xburger.png'},
+                { id: 3, text: 'Hotdog', img: 'food/hotdog.png'},
+                { id: 4, text: 'Loaf Bread Sandwich (Many Flavours)', img: 'food/sandwich.png'},
+                { id: 5, text: 'Pizza', img: 'food/pizza.png'}
+
+
+            ];
+
+            $scope.listBev = [
+                { id: 1, text: 'Water', img: 'food/water.png'}, 
+                { id: 2, text: 'House Wine', img: 'food/wine.png'},
+                { id: 3, text: 'Beer', img: 'food/beer.png'},
+                { id: 4, text: 'Soda', img: 'food/soda.png'}
+            ];
+
+
+            $scope.listFlags = [
+                { id: 'br', img: 'flags/br.png' }, 
+                { id: 'ar', img: 'flags/ar.png' },
+                { id: 'uy', img: 'flags/uy.png' },
+                { id: 'py', img: 'flags/py.png' },
+                { id: 've', img: 'flags/ve.png' }
+            ];
+
+            $scope.listProg = [
+                { text: 'Java' }, 
+                { text: 'Python' },
+                { text: 'C++' },
+                { text: 'Cobol' },
+                { text: 'Visual Basic' }
+            ];
+
+            $scope.lista5 = [
+                { text: 'Administrative' }, 
+                { text: 'Financial' },
+                { text: 'Human Resources' },
+                { text: 'Commercial' }
+
+            ];
+
+            $scope.selFood = $scope.listFood[2];
+            $scope.selBev = $scope.listBev[0];
+
+            $scope.addProg = function() {
+                $scope.listProg.push({ id: 6, text: 'Pascal' });
+            }
+            $scope.resetProg = function() {
+                $scope.selProg = {};
+            }
+
+        }])    
+	</script>
+</body>
+</html>

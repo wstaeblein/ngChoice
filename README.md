@@ -12,6 +12,7 @@ AngularJS directive to create a dropdown like structure or a single menu item wi
 
 <b>Menu Mode:</b> It functions as a single menu item with a popup list of options
 
+
 Dependencies
 ------------
 <ul>
@@ -21,6 +22,10 @@ Dependencies
 </ul>
 
 
+Demo
+----
+
+Check out the <a href="http://rawgit.com/wstaeblein/ngChoice/blob/master/index.html" targe="_blank">demo!</a>
 
 Licence
 -------
