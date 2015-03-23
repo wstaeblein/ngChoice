@@ -25,7 +25,7 @@ Dependencies
 Demo
 ----
 
-Check out the <a href="http://rawgit.com/wstaeblein/ngChoice/blob/master/index.html" targe="_blank">demo!</a>
+Check out the <a href="http://rawgit.com/wstaeblein/ngChoice/master/index.html" targe="_blank">demo!</a>
 
 Licence
 -------
